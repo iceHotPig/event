@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>各种事件的分装函数</title>
+  <!--  监听事件 -->
+  <!--  这里的elem是监听事件的对像，even是事件，
+        fun是函数function(){},sta 是状态，有两种：
+        true or false -->
+  <script>
+    window.onload=function(){
+       function bind(elem,even,fun,sta){
+        if (elem.attachEvent) {
+          elem.attachEvent('on'+even,fun,sta)
+        }else{
+          elem.addEventListener(even,fun,sta);
+        }
+      }
+    }
+  </script>
+ <!-- 事件委托 -->
+ <script>
+    oList.onmouseout=function(e){
+      var e=e||window.event;
+      var target=e.srcElement||e.target;
+      // alert('target.nodeName')
+      if (target.nodeName.toLowerCase='li') {
+        target.style.backgroundColor='';
+      }
+    }
+ </script>
+ <!-- 阻止冒泡事件 -->
+ <script >
+   var e = e || window.event;
+    if ( e && e.stopPropagation ){
+        e.stopPropagation();
+    }else{
+        event.cancelBubble = true;
+      }
+ </script>
+ <!-- 阻止默认事件 -->
+ <script >
+     var oA=document.getElementById('post');
+    oA.onclick =function(e){
+      if(e.preventDefault){
+          e.preventDefault();
+      }else{
+          window.event.returnValue= false;
+      }
+  }
+ </script>
+
+</head>
+<body>
+
+</body>
+</html>
